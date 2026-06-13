@@ -1,7 +1,9 @@
 import express from "express";
 import cors from "cors";
 import morgan from "morgan";
+import "./models/index.js";
 import authRoute from "./routes/auth.route.js";
+import productRoute from "./routes/product.route.js";
 import cookieParser from "cookie-parser";
 
 const app = express();
@@ -17,7 +19,7 @@ app.use(morgan("dev"));
 app.use(cookieParser());
 
 app.use("/api/auth", authRoute);
-
+app.use("/api/products", productRoute);
 
 app.get("/", (req, res) => {
   res.json({
